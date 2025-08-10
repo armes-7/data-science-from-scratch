@@ -219,7 +219,8 @@ assert min_change.symbol == 'AAPL'
 assert min_change.date == datetime.date(2000, 9, 29)
 assert -0.52 < min_change.pct_change < -0.51
 
-changes_by_month: List[DailyChange] = {month: [] for month in range(1, 13)}
+# Track changes for each month in a dictionary keyed by month number.
+changes_by_month: Dict[int, List[DailyChange]] = {month: [] for month in range(1, 13)}
 
 for change in all_changes:
     changes_by_month[change.date.month].append(change)
